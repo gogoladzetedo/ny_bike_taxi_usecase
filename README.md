@@ -22,7 +22,7 @@ Architecture of the data pipeline is given on the figure below.
 ![data pipeline architecture diagram](/images/model.png)
 
 ### Data Pipeline Steps
-* For the completion of the task, Python environment is used. Analysis of the data is done in Jupyter Notebook for the better presentation, file [data_pipeline.ipynb](https://github.com/gogoladzetedo/ny_data_pipeline/blob/main/data_pipeline.ipynb) is available in this repo.
+* For the completion of the task, Python environment is used. Analysis of the data is done in Jupyter Notebook for the better presentation, file [data_pipeline.ipynb](https://github.com/gogoladzetedo/ny_bike_taxi_usecase/blob/main/Data_pipeline.ipynb) is available in this repo.
 * Data extraction from the BigQuery datasets are done using Python BigQuery and BigQuey Storage client libraries. Here, Google Cloud account with the IAM user is needed that has BigQuery Read Access. For the world weather API the trial account is sufficient that gives acess on 500 requests during 60 days. 
 * Extracted data is moved to Pandas dataframes and then stored into the Amazon S3 storage bucket for the landing zone purpose. Project uses AWS account, awswrangler library for storing the data to S3, and connecting to AWS with boto library using the AWS access key and secret.
 * The database solution here is AWS RDS for PostgreSQL. The solution includes database objects creation scripts. There are two schemas - staging with three tables respective to the data sources, and dw with the proposed dimension and facts tables. DW model here is Star schema, although it contains just a few tables to properly implement this particular model. Naturally, all the SQL script are run on PostgreSQL from Python environment via psycopg2 library.
